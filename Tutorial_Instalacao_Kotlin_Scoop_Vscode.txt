@@ -1,0 +1,70 @@
+﻿TUTORIAL: COMO INSTALAR O KOTLIN NO VS CODE (WINDOWS) USANDO SCOOP
+
+
+Este tutorial resolve os seguintes erros ao tentar rodar Kotlin no VS Code:
+1. 'kotlinc' não é reconhecido como um comando interno ou externo...
+2. scoop : O termo 'scoop' não é reconhecido como nome de cmdlet...
+
+
+--------------------------------------------------------------------
+PASSO 1: ABRIR O POWERSHELL CORRETAMENTE
+--------------------------------------------------------------------
+Importante: O Scoop NÃO deve ser instalado usando permissões de Administrador.
+1. Feche qualquer janela do PowerShell que esteja aberta como Administrador.
+2. Abra o menu Iniciar do Windows.
+3. Digite "PowerShell" e clique em "Abrir" (NÃO clique em "Executar como Administrador").
+
+
+--------------------------------------------------------------------
+PASSO 2: PERMITIR A EXECUÇÃO DE SCRIPTS
+--------------------------------------------------------------------
+No terminal aberto, você precisa dar permissão para rodar scripts na sua conta de usuário.
+Cole o comando abaixo e aperte Enter:
+
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+* Se aparecer uma mensagem pedindo confirmação, digite "S" (ou "Y") e aperte Enter.
+
+
+--------------------------------------------------------------------
+PASSO 3: INSTALAR O GERENCIADOR DE PACOTES SCOOP
+--------------------------------------------------------------------
+Com o PowerShell configurado, instale o Scoop copiando e colando o comando oficial:
+
+
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+
+Aguarde até que a mensagem indicando sucesso ("Scoop was installed successfully!") apareça.
+
+
+--------------------------------------------------------------------
+PASSO 4: INSTALAR O COMPILADOR KOTLIN
+--------------------------------------------------------------------
+Agora que o sistema reconhece o Scoop, instale o Kotlin executando o comando abaixo:
+
+
+scoop install kotlin
+
+
+O Scoop baixará o compilador e configurará as Variáveis de Ambiente (PATH) automaticamente.
+
+
+--------------------------------------------------------------------
+PASSO 5: REINICIAR O VS CODE E TESTAR
+--------------------------------------------------------------------
+1. Feche o seu VS Code completamente. (Isso é obrigatório para que ele carregue as novas variáveis de ambiente).
+2. Abra o VS Code novamente no seu projeto.
+3. Tente rodar seu código Kotlin pelo botão "Play" do Code Runner novamente.
+
+
+DICA EXTRA:
+Para garantir que a instalação ocorreu perfeitamente, você pode abrir um terminal (Prompt de Comando ou PowerShell) e digitar:
+
+
+kotlinc -version
+
+
+Se a versão do Kotlin for exibida, significa que o compilador está pronto para uso!
